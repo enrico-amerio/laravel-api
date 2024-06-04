@@ -22,4 +22,9 @@ class ProjectController extends Controller
         $types = Type::all();
         return response()->json($types);
     }
+
+    public function getProjectInfo($id){
+        $project = Project::where('id', $id)->with('type', 'technologies')->first();
+        return response()->json($project);
+    }
 }
